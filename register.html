@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .header div {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="main.php">
+        <h1>Konferencia</h1>
+    </a>
+    <div>
+        <?php if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']): ?>
+        <a href="register.html">Regisztráció</a>
+        <a href="login.html">Bejelentkezés</a>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Regisztáció</h2>
+    <form action="register.php" method="POST">
+        <label for="elotag">Előtag:</label>
+        <input type="text" id="elotag" name="elotag">
+
+        <label for="nev">Név:</label>
+        <input type="text" id="nev" name="nev" required>
+
+        <input type="hidden" id="szerepkor" name="szerepkor" value="szerzo">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="jelszo">Jelszó:</label>
+        <input type="password" id="jelszo" name="jelszo" required>
+
+        <label for="intezmeny">Intézmény:</label>
+        <input type="text" id="intezmeny" name="intezmeny">
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+</body>
+</html>
